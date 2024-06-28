@@ -1,7 +1,6 @@
 import json
 import random
 import string
-
 from dataclasses import dataclass
 
 
@@ -123,7 +122,7 @@ class Rotor:
         return self._position == self.notch
 
     @staticmethod
-    def generate_config(name: str) -> dict[str:str]:
+    def generate_config(name: str) -> RotorConfig:
         """Generate a random rotor config."""
         alphabet = list(string.ascii_uppercase)
         random.shuffle(alphabet)
@@ -133,7 +132,7 @@ class Rotor:
         return RotorConfig(name=name, wiring=wiring, notch=notch)
 
     @staticmethod
-    def load_config(filename: str) -> list[RotorConfig]:
+    def load_config(filename: str) -> "list[Rotor]":
         """
         Load rotor configs from json file and return a list of Rotor objects.
         """
@@ -170,8 +169,8 @@ if __name__ == "__main__":
     )
 
     # save config
-    Rotor.save_config(new_rotor_config, r"tests/test_rotor_configs.json")
+    Rotor.save_config(new_rotor_config, r"tests/configs/test_rotor_configs.json")
 
     # load config
-    loaded_rotors = Rotor.load_config(r"tests/test_rotor_configs.json")
+    loaded_rotors = Rotor.load_config(r"tests/configs/test_rotor_configs.json")
     print("Loaded rotors:", *[(r.name, r.wiring, r.notch) for r in loaded_rotors])
