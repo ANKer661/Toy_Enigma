@@ -1,0 +1,9 @@
+{
+    "rotors": [
+        {
+            "name": "Test Rotor",
+            "wiring": "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
+            "notch": 17
+        }
+    ]
+}
