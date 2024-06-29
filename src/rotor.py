@@ -51,6 +51,21 @@ class Rotor:
 
         self.direction_methods = {"forward": self.forward, "backward": self.backward}
 
+    def __repr__(self) -> str:
+        """ ""
+        Returns a string representation of the Rotor object.
+
+        Returns:
+            str: A string representation containing the name,
+                wiring, notch, and current position of the rotor.
+        """
+        return (
+            f"{self.name} state:\n"
+            f"    wiring: {self.wiring}\n"
+            f"    notch: {self.notch}\n"
+            f"    current position: {self._position}"
+        )
+
     def forward(self, input: int) -> int:
         """
         Maps the input character index through the rotor's wiring in
@@ -85,25 +100,25 @@ class Rotor:
         output = self.backward_mapping[index]
         return (output - self._position + 26) % 26
 
-    def __call__(self, input: int, direction: str = "forward") -> int:
+    def __call__(self, input: int) -> int:
         """
-        Make Rotor callable. This method simply calls the forward
-        or backword method based on direction.
+        Make Rotor callable.
+
+        This method simply calls the forward method.
 
         Args:
             input (int): Input character index (0-25, A=0, B=1, ..., Z=25).
-            direction (str): "forward" or "backward". Defaults to "forward".
 
         Returns:
             int: Output character index (0-25) after passing through the rotor.
 
-        Raises:
-            ValueError: If direction is invalid.
+        Note:
+            This method does not handle the backward mapping. The backward method
+            should be called explicitly when needed to maintain simplicity and
+            clarity within the Enigma machine's circuit.
         """
-        if direction not in self.direction_methods:
-            raise ValueError("Direction must be either 'forward' or 'backward'")
 
-        return self.direction_methods[direction](input)
+        return self.forward(input)
 
     def rotate(self) -> None:
         """Rotates the rotor by one position."""
