@@ -34,6 +34,22 @@ class TestRotor(unittest.TestCase):
         self.assertEqual(self.rotor.backward(ord("E") - ord("A")), 2)
         self.assertEqual(self.rotor.backward(ord("F") - ord("A")), 4)
 
+    def test_call(self):
+        """Test __call__ method."""
+        self.rotor = Rotor(self.config, init_position=0)
+        self.assertEqual(self.rotor(0), (ord("E") - ord("A")))
+        self.rotor.rotate()
+        self.assertEqual(self.rotor(0), (ord("K") - ord("A")) - 1)
+        self.rotor.rotate()
+        self.assertEqual(self.rotor(0), (ord("M") - ord("A")) - 2)
+
+        self.rotor = Rotor(self.config, init_position=0)
+        self.assertEqual(self.rotor(ord("E") - ord("A"), "backward"), 0)
+        self.assertEqual(self.rotor(ord("L") - ord("A"), "backward"), 4)
+        self.rotor.rotate()
+        self.assertEqual(self.rotor(ord("E") - ord("A"), "backward"), 2)
+        self.assertEqual(self.rotor(ord("F") - ord("A"), "backward"), 4)
+
     def test_set_position(self):
         """Test setting rotor position."""
         self.rotor = Rotor(self.config, init_position=0)

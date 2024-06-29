@@ -47,6 +47,8 @@ class Rotor:
         for i, c in enumerate(self.wiring):
             self.backward_mapping[ord(c) - ord("A")] = i
 
+        self.direction_methods = {"forward": self.forward, "backward": self.backward}
+
     def forward(self, input: int) -> int:
         """
         Maps the input character index through the rotor's wiring in
@@ -80,6 +82,12 @@ class Rotor:
         index = (self._position + input) % 26
         output = self.backward_mapping[index]
         return (output - self._position + 26) % 26
+
+    def __call__(self, input: int, direction: str = "forward") -> int:
+        if direction not in self.direction_methods:
+            raise ValueError("Direction must be either 'forward' or 'backward'")
+
+        return self.direction_methods[direction](input)
 
     def rotate(self) -> None:
         """Rotates the rotor by one position."""

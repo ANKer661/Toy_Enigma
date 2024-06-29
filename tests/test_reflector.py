@@ -33,3 +33,29 @@ class TestReflector(unittest.TestCase):
         self.assertEqual(
             self.reflector.reflect(ord("F") - ord("A")), ord("V") - ord("A")
         )
+
+    def test_call(self):
+        self.assertEqual(
+            self.reflector(ord("T") - ord("A")), ord("A") - ord("A")
+        )
+        self.assertEqual(
+            self.reflector(ord("B") - ord("A")), ord("G") - ord("A")
+        )
+        self.assertEqual(
+            self.reflector(ord("H") - ord("A")), ord("N") - ord("A")
+        )
+        self.assertEqual(
+            self.reflector(ord("D") - ord("A")), ord("Z") - ord("A")
+        )
+        self.assertEqual(
+            self.reflector(ord("Z") - ord("A")), ord("D") - ord("A")
+        )
+        self.assertEqual(
+            self.reflector(ord("C") - ord("A")), ord("J") - ord("A")
+        )
+        self.assertEqual(
+            self.reflector(ord("X") - ord("A")), ord("O") - ord("A")
+        )
+        self.assertEqual(
+            self.reflector(ord("F") - ord("A")), ord("V") - ord("A")
+        )

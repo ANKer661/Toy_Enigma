@@ -25,6 +25,7 @@ class Reflector:
     The reflector is responsible for reversing the electrical signal in the
     Enigma machine, sending it back through the rotors in the opposite direction.
     """
+
     def __init__(self, config: ReflectorConfig) -> None:
         """
         Initialize a Reflector object.
@@ -57,6 +58,14 @@ class Reflector:
                 0=A, 1=B, ..., 25=Z).
         """
         return self.mapping[input]
+
+    def __call__(self, input: int) -> int:
+        """
+        Make the Reflector object callable.
+        
+        This method simply calls the reflect method.
+        """
+        return self.reflect(input)
 
     @staticmethod
     def generate_config() -> ReflectorConfig:
