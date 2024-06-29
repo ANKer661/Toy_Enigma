@@ -24,31 +24,8 @@ class Rotor:
     """
     Represents a rotor in an Enigma machine.
 
-    Attributes:
-        name (str): The name of the rotor.
-        wiring (str): A 26-character string representing rotor wiring (A-Z).
-        notch (int): The notch position (0-25, where 0=A, 1=B, ..., 25=Z).
-        _position (int): The initial position of the rotor.
-        forward_mapping (list[int]): The forward wiring mapping.
-        backward_mapping (list[int]): The backward wiring mapping.
-
-    Methods:
-        forward(input: int) -> int:
-            Maps the input character index through the rotor's wiring
-            in the forward direction.
-
-        backward(input: int) -> int:
-            Maps the input character index through the rotor's wiring
-            in the backward direction.
-
-        rotate() -> None:
-            Rotates the rotor by one position.
-
-        set_position(position: int) -> None:
-            Sets the rotor to a specific position.
-
-        is_at_notch() -> bool:
-            Checks if the rotor is at the notch position.
+    Rotors perform letter substitution and rotate with each keypress,
+    forming the core of Enigma's encryption mechanism.
     """
 
     def __init__(self, config: RotorConfig, init_position: int = 0) -> None:

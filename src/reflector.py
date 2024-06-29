@@ -19,6 +19,12 @@ class ReflectorConfig:
 
 
 class Reflector:
+    """
+    Represents the reflector of an Enigma machine.
+
+    The reflector is responsible for reversing the electrical signal in the
+    Enigma machine, sending it back through the rotors in the opposite direction.
+    """
     def __init__(self, config: ReflectorConfig) -> None:
         """
         Initialize a Reflector object.
