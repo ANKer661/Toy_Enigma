@@ -74,3 +74,23 @@ class TestPlugboard(unittest.TestCase):
         self.assertTrue(
             "CD" in err_message or "DC" in err_message
         )
+
+    def test_get_info(self):
+        pb = Plugboard("AB CD EF")
+        self.assertEqual(pb.get_plugboard_connections(), "AB CD EF")
+
+        pb = Plugboard("AB CD FE")
+        self.assertEqual(pb.get_plugboard_connections(), "AB CD EF")
+
+        pb = Plugboard("ZA CD FE UI GT")
+        self.assertEqual(pb.get_plugboard_connections(), "AZ CD EF GT IU")
+
+    def test_set_plugboard(self):
+        pb = Plugboard("AB CD EF")
+        self.assertEqual(pb.get_plugboard_connections(), "AB CD EF")
+
+        pb.set_plugboard("AB CD FE")
+        self.assertEqual(pb.get_plugboard_connections(), "AB CD EF")
+
+        pb.set_plugboard("ZA CD FE UI GT")
+        self.assertEqual(pb.get_plugboard_connections(), "AZ CD EF GT IU")

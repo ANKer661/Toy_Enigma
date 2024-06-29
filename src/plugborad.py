@@ -24,12 +24,40 @@ class Plugboard:
         """
         if connections is None:
             connections = "AJ KU DO WE FC NB QZ GM XV RT"
+        self.set_plugboard(connections)
+
+    def __repr__(self) -> str:
+        """
+        Returns a string representation of the Plugboard object.
+
+        Returns:
+            str: A string representation containing the current plugboard connections.
+        """
+        return f"Plugboard Connections: {self.get_plugboard_info()}"
+
+    def set_plugboard(self, connections: str | None = None) -> None:
+        """
+        Set plugboard with given connections.
+
+        Args:
+            connections (str): A string of space-separated letter pairs representing
+                               the plugboard connections.
+                               E.g., "AB CD EF" connects A to B, C to D, E to F.
+                               If not provided, default connections will be used.
+
+        Raises:
+            ValueError: If more than 10 connections are provided
+                        or if any connection pair is invalid,
+                        if any character is used more than once,
+                        or if any pair contains invalid characters.
+        """
+        # Ensure initial state for detecting and preventing duplicate connections.
+        self.reset_plugboard()
 
         connection_pairs = connections.split()
         if len(connection_pairs) > 10:
             raise ValueError("Only up to 10 connections are supported.")
 
-        self.mapping = list(range(26))
         for pair in connection_pairs:
             if len(pair) != 2:
                 raise ValueError(f"Invalid connection pair: {pair}")
@@ -85,6 +113,22 @@ class Plugboard:
         """
         return self.pass_through(input)
 
-    def reset(self) -> None:
+    def reset_plugboard(self) -> None:
         """Reset the plugboard state to no connections."""
         self.mapping = list(range(26))
+
+    def get_plugboard_connections(self) -> str:
+        """
+        Get the current plugboard connections.
+
+        Returns:
+            str: A string representing the current plugboard connections,
+                 formatted as space-separated letter pairs.
+        """
+        connections = []
+        for i, c in enumerate(self.mapping):
+            if i != c:
+                connections.append(chr(ord("A") + i) + chr(ord("A") + c))
+                self.mapping[c] = c
+
+        return " ".join(connections)
