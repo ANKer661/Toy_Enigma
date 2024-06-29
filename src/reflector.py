@@ -124,4 +124,4 @@ if __name__ == "__main__":
 
     # load config
     reflector = Reflector.load_config(r"tests/configs/test_reflector_config.json")
-    print("Loaded rotors:", reflector.wiring)
+    print("Loaded reflector:", reflector.wiring)
