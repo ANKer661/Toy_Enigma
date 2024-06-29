@@ -84,6 +84,20 @@ class Rotor:
         return (output - self._position + 26) % 26
 
     def __call__(self, input: int, direction: str = "forward") -> int:
+        """
+        Make Rotor callable. This method simply calls the forward
+        or backword method based on direction.
+
+        Args:
+            input (int): Input character index (0-25, A=0, B=1, ..., Z=25).
+            direction (str): "forward" or "backward". Defaults to "forward".
+
+        Returns:
+            int: Output character index (0-25) after passing through the rotor.
+
+        Raises:
+            ValueError: If direction is invalid.
+        """
         if direction not in self.direction_methods:
             raise ValueError("Direction must be either 'forward' or 'backward'")
 
