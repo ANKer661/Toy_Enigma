@@ -1,3 +1,4 @@
+from __future__ import annotations
 import json
 import random
 import string
@@ -38,8 +39,9 @@ class Reflector:
             ValueError: If the wiring is not a 26-character string
                 with unique letters A-Z.
         """
+        self.config = config
         self.wiring = config.wiring
-        self.mapping = [ord(c) - ord("A") for c in self.wiring]
+        self.mapping = [ord(c) - ord("A") for c in config.wiring]
         if len(set(self.mapping)) != 26:
             raise ValueError(
                 "Wiring must be a 26-character string with unique letters A-Z."
@@ -62,7 +64,7 @@ class Reflector:
     def __call__(self, input: int) -> int:
         """
         Make the Reflector object callable.
-        
+
         This method simply calls the reflect method.
         """
         return self.reflect(input)
@@ -85,15 +87,15 @@ class Reflector:
 
         return ReflectorConfig(wiring="".join(wiring))
 
-    @staticmethod
-    def load_config(filename: str) -> "Reflector":
+    @classmethod
+    def load_config(cls, filename: str) -> Reflector:
         """
         Load reflector configs from json file and return a Reflector objects.
         """
         with open(filename, "r") as f:
             data = json.load(f)
 
-        return Reflector(ReflectorConfig(**data["reflectors"]))
+        return cls(ReflectorConfig(**data["reflectors"]))
 
     @staticmethod
     def save_config(config: ReflectorConfig, filename: str):

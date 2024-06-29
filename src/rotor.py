@@ -1,3 +1,4 @@
+from __future__ import annotations
 import json
 import random
 import string
@@ -38,6 +39,7 @@ class Rotor:
             init_position (int): The initial position of the rotor (default 0).
         """
         self._position = init_position
+        self.config = config
         self.name = config.name
         self.wiring = config.wiring
         self.notch = config.notch
@@ -130,14 +132,14 @@ class Rotor:
 
         return RotorConfig(name=name, wiring=wiring, notch=notch)
 
-    @staticmethod
-    def load_config(filename: str) -> "list[Rotor]":
+    @classmethod
+    def load_config(cls, filename: str) -> list[Rotor]:
         """
         Load rotor configs from json file and return a list of Rotor objects.
         """
         with open(filename, "r") as f:
             data = json.load(f)
-        return [Rotor(RotorConfig(**rotor_data)) for rotor_data in data["rotors"]]
+        return [cls(RotorConfig(**rotor_data)) for rotor_data in data["rotors"]]
 
     @staticmethod
     def save_config(configs: RotorConfig | list[RotorConfig], filename: str):
