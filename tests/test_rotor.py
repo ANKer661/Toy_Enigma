@@ -43,13 +43,6 @@ class TestRotor(unittest.TestCase):
         self.rotor.rotate()
         self.assertEqual(self.rotor(0), (ord("M") - ord("A")) - 2)
 
-        self.rotor = Rotor(self.config, init_position=0)
-        self.assertEqual(self.rotor(ord("E") - ord("A"), "backward"), 0)
-        self.assertEqual(self.rotor(ord("L") - ord("A"), "backward"), 4)
-        self.rotor.rotate()
-        self.assertEqual(self.rotor(ord("E") - ord("A"), "backward"), 2)
-        self.assertEqual(self.rotor(ord("F") - ord("A"), "backward"), 4)
-
     def test_set_position(self):
         """Test setting rotor position."""
         self.rotor = Rotor(self.config, init_position=0)

@@ -1,5 +1,5 @@
 import unittest
-from src.plugborad import Plugboard
+from src.plugboard import Plugboard
 
 
 class TestPlugboard(unittest.TestCase):
