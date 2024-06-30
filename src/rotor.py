@@ -130,6 +130,10 @@ class Rotor:
         self._position = position
         return self
 
+    def get_current_position(self) -> int:
+        """Get current postion of the rotor."""
+        return self._position
+
     def is_at_notch(self) -> bool:
         """
         Checks if the rotor is at the notch position.

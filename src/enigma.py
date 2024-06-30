@@ -184,12 +184,21 @@ class EnigmaMachine:
         """
         self.plugboard.set_plugboard(connections)
 
+    def get_working_rotors_position(self) -> list[int]:
+        """
+        Retrieves current position of the current working rotors.
+
+        Returns:
+            list[int]: A lsit each working rotor's current position.
+        """
+        return [rotor.get_current_position() for rotor in self.working_rotors]
+
     def get_working_rotors_info(self) -> str:
         """
         Retrieves information about the current working rotors.
 
         Returns:
-            str: A  string describing each working rotor's
+            str: A string describing each working rotor's
                 configuration and current position.
         """
         return "\n".join([str(rotor) for rotor in self.working_rotors])
