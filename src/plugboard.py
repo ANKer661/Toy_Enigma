@@ -33,7 +33,7 @@ class Plugboard:
         Returns:
             str: A string representation containing the current plugboard connections.
         """
-        return f"Plugboard Connections: {self.get_plugboard_connections()}"
+        return f"Plugboard Connections:  \n{self.get_plugboard_connections()}"
 
     def set_plugboard(self, connections: str | None = None) -> Plugboard:
         """

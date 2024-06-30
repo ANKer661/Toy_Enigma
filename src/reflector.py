@@ -77,7 +77,7 @@ class Reflector:
             str: A string representation containing the name and 
                 wiring configuration of the reflector.
         """
-        return f"{self.config.name} configuration: \n    wiring: {self.config.wiring}"
+        return f"{self.config.name} configuration:  \n    wiring: {self.config.wiring}"
 
     @staticmethod
     def generate_config() -> ReflectorConfig:

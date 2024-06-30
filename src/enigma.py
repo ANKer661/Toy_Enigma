@@ -221,12 +221,10 @@ class EnigmaMachine:
         plugboard_info = self.get_plugboard_info()
 
         return (
-            "Enigma Machine Configuration:\n"
-            f"Selected Rotors:\n{rotor_info}\n"
-            "---------------------------------\n"
-            f"Reflector:\n{reflector_info}\n"
-            "---------------------------------\n"
-            f"Plugboard:\n{plugboard_info}\n"
+            "Enigma Machine Configuration:  \n\n"
+            f"{rotor_info}  \n\n"
+            f"{reflector_info}  \n\n"
+            f"{plugboard_info}  \n"
         )
 
 
