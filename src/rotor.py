@@ -120,13 +120,15 @@ class Rotor:
 
         return self.forward(input)
 
-    def rotate(self) -> None:
+    def rotate(self) -> Rotor:
         """Rotates the rotor by one position."""
         self._position = (self._position + 1) % 26
+        return self
 
-    def set_position(self, position: int) -> None:
+    def set_position(self, position: int) -> Rotor:
         """Sets the rotor to a specific position."""
         self._position = position
+        return self
 
     def is_at_notch(self) -> bool:
         """

@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 class Plugboard:
     """
     Represents the plugboard of an Enigma machine.
@@ -33,9 +36,9 @@ class Plugboard:
         Returns:
             str: A string representation containing the current plugboard connections.
         """
-        return f"Plugboard Connections: {self.get_plugboard_info()}"
+        return f"Plugboard Connections: {self.get_plugboard_connections()}"
 
-    def set_plugboard(self, connections: str | None = None) -> None:
+    def set_plugboard(self, connections: str | None = None) -> Plugboard:
         """
         Set plugboard with given connections.
 
@@ -89,6 +92,8 @@ class Plugboard:
             self.mapping[index1] = index2
             self.mapping[index2] = index1
 
+        return self
+
     def pass_through(self, input: int | str) -> int:
         """
         Pass a character through the plugboard.
@@ -113,9 +118,10 @@ class Plugboard:
         """
         return self.pass_through(input)
 
-    def reset_plugboard(self) -> None:
+    def reset_plugboard(self) -> Plugboard:
         """Reset the plugboard state to no connections."""
         self.mapping = list(range(26))
+        return self
 
     def get_plugboard_connections(self) -> str:
         """
