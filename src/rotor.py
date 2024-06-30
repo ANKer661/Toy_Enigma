@@ -60,10 +60,10 @@ class Rotor:
                 wiring, notch, and current position of the rotor.
         """
         return (
-            f"{self.name} state:\n"
-            f"    wiring: {self.wiring}\n"
-            f"    notch: {self.notch}\n"
-            f"    current position: {self._position}"
+            f"{self.name} state:  \n"
+            f"    wiring: {self.wiring}  \n"
+            f"    notch: {self.notch}  \n"
+            f"    current position: {self._position}  \n"
         )
 
     def forward(self, input: int) -> int:
