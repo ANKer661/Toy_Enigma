@@ -54,15 +54,10 @@ class TestEnigmaMachine(unittest.TestCase):
     def test_choose_rotors(self):
         """Test choosing rotors"""
         machine = EnigmaMachine(self.config)
-        machine.choose_rotors(0, 3)
+        machine.choose_rotors([3, 4, 1])
         self.assertEqual(machine.working_rotors[0].name, "Rotor IV")
-        machine.choose_rotors(1, 4)
         self.assertEqual(machine.working_rotors[1].name, "Rotor V")
-
-        # choosing an already chosen rotor should raise ValueError
-        with self.assertRaises(ValueError) as e:
-            machine.choose_rotors(2, 4)
-        self.assertIn("has already been chosen", str(e.exception))
+        self.assertEqual(machine.working_rotors[2].name, "Rotor II")
 
     def test_set_rotors_position(self):
         """Test setting rotor positions"""

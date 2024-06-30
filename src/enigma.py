@@ -75,11 +75,6 @@ class EnigmaMachine:
             )
         ]
 
-        # Update the chosen_rotors list based on the working_rotor_indices
-        self.chosen_rotors = [
-            i in self.working_rotor_indices for i in range(len(self.rotors))
-        ]
-
         self.reflector = Reflector.load_config(self.config.reflector_config_path)
         self.plugboard = Plugboard(
             self.config.pulgboard_connections
@@ -132,34 +127,25 @@ class EnigmaMachine:
 
     def choose_rotors(
         self,
-        working_rotor_position: int,
-        target_rotor_index: int,
-        init_position: int = 0,
+        target_rotor_indices: list[int],
+        init_positions: list[int] | None = None,
     ) -> None:
         """
         Choose a rotor at a specific position in the Enigma
         machine configuration.
 
         Args:
-            working_rotor_position (int): The position in the rotor chain
-                where the rotor is chosen.
-            target_rotor_index (int): The index of the rotor to be
-                placed at the specified position.
-            init_position (int): The initial position of the new rotor.
+            target_rotor_indices (int): A list of the indices of the
+                rotor to be placed at the specified positions.
+            init_positions (list[int]): A list of the initial position
+                of the new rotor.
         """
-        if not self.chosen_rotors[target_rotor_index]:
-            previous_rotor_index = self.working_rotor_indices[working_rotor_position]
-            self.working_rotor_indices[working_rotor_position] = target_rotor_index
-
-            self.working_rotors[working_rotor_position] = self.rotors[
-                target_rotor_index
-            ]
-            self.working_rotors[working_rotor_position].set_position(init_position)
-
-            self.chosen_rotors[target_rotor_index] = True
-            self.chosen_rotors[previous_rotor_index] = False
-        else:
-            raise ValueError(f"Rotor {target_rotor_index} has already been chosen.")
+        if init_positions is None:
+            init_positions = [0, 0, 0]
+        self.working_rotors = [
+            self.rotors[i].set_position(pos)
+            for i, pos in zip(target_rotor_indices, init_positions)
+        ]
 
     def set_rotors_position(self, working_rotor_position: int, rotor_position: int):
         """
