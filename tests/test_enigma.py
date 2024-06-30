@@ -26,12 +26,30 @@ class TestEnigmaMachine(unittest.TestCase):
         config = EnigmaMachineConfig(
             working_rotor_indices=[4, 2, 1], rotors_init_position=[23, 1, 15]
         )
-        plaintext = "HELLOAIOUJOIJQKJLKAJJKCJIAKIOIUQIJLKAJJIOAUSKLQJ"
+        plaintext = "ASDKJWIOASJDLKJLKJKKKJASLKDJIWKASJD"
         machine = EnigmaMachine(config)
         encrypted = machine.encrypt_decrypt(plaintext)
         machine = EnigmaMachine(config)
         decrypted = machine.encrypt_decrypt(encrypted)
         self.assertEqual(decrypted, plaintext)
+
+        config = EnigmaMachineConfig(
+            working_rotor_indices=[4, 2, 1], rotors_init_position=[23, 1, 15]
+        )
+        plaintext = "ASDKJWIOASJDLKJLKJKKKJASLKDJIWKASJD"
+        machine = EnigmaMachine(config)
+        encrypted = machine.encrypt_decrypt(plaintext)
+        decrypted = machine.encrypt_decrypt(encrypted)
+        self.assertNotEqual(decrypted, plaintext)
+
+        config = EnigmaMachineConfig(
+            working_rotor_indices=[4, 2, 1], rotors_init_position=[23, 1, 15]
+        )
+        plaintext = "ASDKJWIOASJDLKJLKJKKKJASLKDJIWKASJD"
+        machine = EnigmaMachine(config)
+        encrypted1 = machine.encrypt_decrypt(plaintext)
+        encrypted2 = machine.encrypt_decrypt(plaintext)
+        self.assertNotEqual(encrypted1, encrypted2)
 
     def test_choose_rotors(self):
         """Test choosing rotors"""
