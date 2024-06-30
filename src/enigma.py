@@ -21,12 +21,13 @@ class ActuatorBar:
         Args:
             rotors (list[Rotor]): List of rotor objects to push.
         """
-        r1, r2, r3 = rotors
-        if r2.is_at_notch():
-            r3.rotate()
+        r0, r1, r2 = rotors
         if r1.is_at_notch():
+            r1.rotate()
             r2.rotate()
-        r1.rotate()
+        if r0.is_at_notch():
+            r1.rotate()
+        r0.rotate()
 
 
 @dataclass
