@@ -112,14 +112,13 @@ class EnigmaMachine:
         """
         ciphertext = ""
         for letter in message:
+            self.actuator_bar.push_rotors(self.working_rotors)
             current_letter = letter
 
             for component in self.circuit:
                 current_letter = component(current_letter)
 
             ciphertext += chr(ord("A") + current_letter)
-
-            self.actuator_bar.push_rotors(self.working_rotors)
 
         return ciphertext
 
