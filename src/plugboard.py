@@ -101,9 +101,20 @@ class Plugboard:
 
         Returns:
             int: The index of the output character after passing through the plugboard.
+
+        Raises:
+            ValueError: If the input is not a valid integer (0-25)
+                or a single alphabetic character (A-Z).
         """
         if isinstance(input, str):
+            if not input.isalpha():
+                raise ValueError(
+                    f"Input must be alphabetic characters (a-z and A-Z), found ' {input} '"
+                )
             input = ord(input.upper()) - ord("A")
+
+        if input < 0 or input > 25:
+            raise ValueError("Input integer must be between 0 and 25 (inclusive)")
 
         return self.mapping[input]
 
