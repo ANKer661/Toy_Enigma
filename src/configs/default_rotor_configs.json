@@ -1,0 +1,29 @@
+{
+    "rotors": [
+        {
+            "name": "Rotor I",
+            "wiring": "POLTKYSJERBMCFNVWIQXGAHUDZ",
+            "notch": 3
+        },
+        {
+            "name": "Rotor II",
+            "wiring": "VNLSHEPYUXQRZWMABKOGDFTCJI",
+            "notch": 21
+        },
+        {
+            "name": "Rotor III",
+            "wiring": "KHDVYSJOXNGWUBFQPEZTCLMRAI",
+            "notch": 16
+        },
+        {
+            "name": "Rotor IV",
+            "wiring": "ZMDJHSPYREVCTUFQNGBXLIWAKO",
+            "notch": 1
+        },
+        {
+            "name": "Rotor V",
+            "wiring": "MQENXOHVPYRIJZFGWUBATKDCSL",
+            "notch": 4
+        }
+    ]
+}
