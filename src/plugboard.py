@@ -9,7 +9,7 @@ class Plugboard:
     before and after the rotor.
     """
 
-    def __init__(self, connections: str | None = None) -> None:
+    def __init__(self, connections: str) -> None:
         """
         Initialize the plugboard with given connections.
 
@@ -17,7 +17,6 @@ class Plugboard:
             connections (str): A string of space-separated letter pairs representing
                                the plugboard connections.
                                E.g., "AB CD EF" connects A to B, C to D, E to F.
-                               If not provided, default connections will be used.
 
         Raises:
             ValueError: If more than 10 connections are provided
@@ -25,8 +24,6 @@ class Plugboard:
                         if any character is used more than once,
                         or if any pair contains invalid characters.
         """
-        if connections is None:
-            connections = "AJ KU DO WE FC NB QZ GM XV RT"
         self.set_plugboard(connections)
 
     def __repr__(self) -> str:

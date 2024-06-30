@@ -35,7 +35,7 @@ class EnigmaMachineConfig:
     working_rotor_indices: list[int] = field(default_factory=lambda: [0, 1, 2])
     rotors_init_position: list[int] = field(default_factory=lambda: [0, 0, 0])
     reflector_config_path: str = r"src/configs/default_reflector_config.json"
-    pulgboard_connections: str | None = None
+    pulgboard_connections: str = "AJ KU DO WE FC NB QZ GM XV RT"
 
 
 class EnigmaMachine:
