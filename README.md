@@ -65,7 +65,7 @@ Open the Streamlit app in your web browser.
   - Select 3 working rotors from the available 5.
   - Set the initial positions for the chosen rotors.
   - Enter plugboard connections in the specified format (e.g., AB CD EF).
-  - Enter the text you wish to encrypt or decrypt in the main interface.
+- Enter the text you wish to encrypt or decrypt in the main interface.
 - Click the "Process" button to view the result.
 - Expand the "Current Enigma State" section to see the current configuration of the Enigma machine.
 
