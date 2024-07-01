@@ -74,7 +74,7 @@ class Reflector:
         Returns a string representation of the Reflector object.
 
         Returns:
-            str: A string representation containing the name and 
+            str: A string representation containing the name and
                 wiring configuration of the reflector.
         """
         return f"{self.config.name} configuration:  \n    wiring: {self.config.wiring}"

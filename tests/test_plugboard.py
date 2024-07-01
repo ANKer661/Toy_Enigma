@@ -52,12 +52,8 @@ class TestPlugboard(unittest.TestCase):
             Plugboard("AB CA")
         err_message = str(context.exception)
         self.assertIn("Repeated character in connections", err_message)
-        self.assertTrue(
-            "AB" in err_message or "BA" in err_message
-        )
-        self.assertTrue(
-            "AC" in err_message or "CA" in err_message
-        )
+        self.assertTrue("AB" in err_message or "BA" in err_message)
+        self.assertTrue("AC" in err_message or "CA" in err_message)
 
     def test_multiple_repeated_characters(self):
         """Test multiple repeated characters"""
@@ -65,15 +61,9 @@ class TestPlugboard(unittest.TestCase):
             Plugboard("AB CD AD AG")
         err_message = str(context.exception)
         self.assertIn("Repeated character in connections", err_message)
-        self.assertTrue(
-            "AB" in err_message or "BA" in err_message
-        )
-        self.assertTrue(
-            "DA" in err_message or "AD" in err_message
-        )
-        self.assertTrue(
-            "CD" in err_message or "DC" in err_message
-        )
+        self.assertTrue("AB" in err_message or "BA" in err_message)
+        self.assertTrue("DA" in err_message or "AD" in err_message)
+        self.assertTrue("CD" in err_message or "DC" in err_message)
 
     def test_get_info(self):
         pb = Plugboard("AB CD EF")

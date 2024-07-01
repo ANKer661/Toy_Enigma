@@ -13,7 +13,7 @@ name_to_index = {
 
 def update_rotor_position(working_rotor_position: int) -> None:
     """
-    Updates the position of a specified rotor in the Enigma 
+    Updates the position of a specified rotor in the Enigma
     machine based on user selection.
 
     Args:
@@ -101,7 +101,7 @@ def display_enigma_config(machine: EnigmaMachine):
     of the working rotors, as well as the plugboard connections.
 
     Args:
-        machine (EnigmaMachine): Instance of the Enigma machine 
+        machine (EnigmaMachine): Instance of the Enigma machine
             to display the configuration for.
     """
     rotors = machine.working_rotors

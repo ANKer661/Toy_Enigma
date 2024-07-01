@@ -15,7 +15,7 @@ def display_configuration__sidebar() -> None:
     """
     # Configuration
     st.sidebar.header("Configuration:hammer_and_wrench:", divider="blue")
-    
+
     # choose 3 working rotors out of 5 rotors
     st.sidebar.multiselect(
         "Select Working Rotors:gear:",
@@ -24,7 +24,6 @@ def display_configuration__sidebar() -> None:
         max_selections=3,
         key="working_rotor_names",
         on_change=lambda: update_working_rotors(),
-        
     )
 
     # set rotors init position
@@ -55,4 +54,3 @@ def display_configuration__sidebar() -> None:
         allowing you to encrypt and decrypt messages using configurable settings.
         """
     )
-
