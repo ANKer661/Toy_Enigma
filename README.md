@@ -21,15 +21,19 @@ This app simulates the Enigma machine used during World War II for secure commun
 ### Project Structure
 
 - `Toy_Enigma_Simulator`/
+  
   - `streamlit_layout/`: Contains layout and view-related code.
+  
     - `sidebar.py`: Configuration and settings displayed in the sidebar.
     - `main_view.py`: Main encryption/decryption interface.
     - `utils.py`: Utility functions used by the sidebar and main view.
+  
   - `src/`: Core Enigma machine logic.
     - `enigma.py`: Core logic for the Enigma machine, including rotor mechanisms and encryption/decryption functions.
     - `plugboard.py`: Definition and operations of Enigma machine's plugboard for letter substitution.
     - `reflector.py`: Definition and operations of Reflector of the Enigma machine, which ensures reciprocal encryption.
     - `rotor.py`: Definition and operations of Rotors used in the Enigma machine, including stepping and wiring configurations.
+  
   - `enigma_app.py`: Main entry point for the Streamlit application.
 
 ### Installation
