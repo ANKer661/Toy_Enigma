@@ -11,14 +11,24 @@ name_to_index = {
 }
 
 
-def update_rotor_position(working_rotor_position):
+def update_rotor_position(working_rotor_position: int) -> None:
+    """
+    Updates the position of a specified rotor in the Enigma 
+    machine based on user selection.
+
+    Args:
+        working_rotor_position (int): Index of the rotor to update.
+    """
     st.session_state.enigma_machine.set_rotors_position(
         working_rotor_position,
         st.session_state[f"rotor{working_rotor_position}_position"],
     )
 
 
-def update_working_rotors():
+def update_working_rotors() -> None:
+    """
+    Update the working rotors based on user selection.
+    """
     match len(st.session_state["working_rotor_names"]):
         case 3:
             working_rotor_indices = [
@@ -32,7 +42,13 @@ def update_working_rotors():
             st.session_state.show_slider = False
 
 
-def create_rotor_init_positon_slider(i):
+def create_rotor_init_positon_slider(i: int) -> None:
+    """
+    Create a slider for setting the initial position of a rotor.
+
+    Args:
+        i (int): Index of the rotor for which the slider is created.
+    """
     rotor = st.session_state.enigma_machine.working_rotors[i]
     st.sidebar.slider(
         f"Init Position of {rotor.name}:gear:",
@@ -41,11 +57,16 @@ def create_rotor_init_positon_slider(i):
         value=st.session_state.enigma_machine.config.rotors_init_position[i],
         step=1,
         key=f"rotor{i}_position",
+        # Updates the Enigma machine's rotor
+        # position when the slider value changes.
         on_change=lambda: update_rotor_position(i),
     )
 
 
-def update_plugboard_connections():
+def update_plugboard_connections() -> None:
+    """
+    Update the plugboard connections based on user input.
+    """
     try:
         st.session_state.enigma_machine.set_plugboard(st.session_state.plugboard_input)
         st.session_state.plugboard_invalid = False
@@ -57,7 +78,16 @@ def update_plugboard_connections():
         st.session_state.plugboard_invalid = True
 
 
-def display_rotor_position(rotor_name, position, notch):
+def display_rotor_position(rotor_name: str, position: int, notch: int) -> None:
+    """
+    Displays the current position of a rotor, with indicators for the rotor's
+    current position and notch.
+
+    Args:
+        rotor_name (str): Name of the rotor.
+        position (int): Current position of the rotor.
+        notch (int): Notch position of the rotor.
+    """
     st.write(f"{rotor_name}: ")
     chars = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
     chars[position] = f"[{chars[position]}]"
@@ -66,10 +96,18 @@ def display_rotor_position(rotor_name, position, notch):
 
 
 def display_enigma_config(machine: EnigmaMachine):
+    """
+    Retrieves and displays the current positions and notch settings
+    of the working rotors, as well as the plugboard connections.
+
+    Args:
+        machine (EnigmaMachine): Instance of the Enigma machine 
+            to display the configuration for.
+    """
     rotors = machine.working_rotors
     notchs = [rotor.notch for rotor in rotors]
     positions = machine.get_working_rotors_position()
     for i in range(3):
         display_rotor_position(rotors[i].name, positions[i], notchs[i])
-    st.write("Plugboard Connections::electric_plug:")
+    st.write("Plugboard Connections:")
     st.code(machine.plugboard.get_plugboard_connections())

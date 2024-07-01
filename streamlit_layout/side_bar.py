@@ -6,7 +6,13 @@ from .utils import (
 )
 
 
-def display_configuration__sidebar():
+def display_configuration__sidebar() -> None:
+    """
+    Display the configuration sidebar for the Enigma machine simulator.
+
+    Allows users to select working rotors, set rotor initial positions,
+    and configure plugboard connections.
+    """
     # Configuration
     st.sidebar.header("Configuration:hammer_and_wrench:", divider="blue")
     

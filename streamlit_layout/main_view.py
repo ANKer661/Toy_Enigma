@@ -2,7 +2,14 @@ import streamlit as st
 from .utils import display_enigma_config
 
 
-def display_main_view():
+def display_main_view() -> None:
+    """
+    Display the main view of the Enigma machine simulator.
+
+    Allows users to enter text for encryption or decryption,
+    process the input, and display the result along with the current
+    state of the Enigma machine.
+    """
     # Main App
     text_input = st.text_area("Enter text to encrypt or decrypt:", height=150)
 
