@@ -56,7 +56,7 @@ To run this project locally, follow these steps:
 3. Run the Streamlit app:
 
     ```bash
-    streamlit run app.py
+    streamlit run enigma_app.py
     ```
 
 Or try out the [online demo](https://anker661-toy-enigma-simulator-enigma-app-8skqnu.streamlit.app/) to see the Toy Enigma Simulator in action!
