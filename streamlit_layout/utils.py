@@ -1,4 +1,5 @@
 import streamlit as st
+import string
 from src.enigma import EnigmaMachine
 
 
@@ -11,18 +12,18 @@ name_to_index = {
 }
 
 
-def update_rotor_position(working_rotor_position: int) -> None:
+def update_rotor_position() -> None:
     """
-    Updates the position of a specified rotor in the Enigma
+    Updates the position of all rotors in the Enigma
     machine based on user selection.
-
-    Args:
-        working_rotor_position (int): Index of the rotor to update.
     """
-    st.session_state.enigma_machine.set_rotors_position(
-        working_rotor_position,
-        st.session_state[f"rotor{working_rotor_position}_position"],
-    )
+    for working_rotor_position in range(
+        len(st.session_state.enigma_machine.working_rotor_indices)
+    ):
+        st.session_state.enigma_machine.set_rotors_position(
+            working_rotor_position,
+            ord(st.session_state[f"rotor{working_rotor_position}_position"]) - ord("A"),
+        )
 
 
 def update_working_rotors() -> None:
@@ -50,16 +51,16 @@ def create_rotor_init_positon_slider(i: int) -> None:
         i (int): Index of the rotor for which the slider is created.
     """
     rotor = st.session_state.enigma_machine.working_rotors[i]
-    st.sidebar.slider(
-        f"Init Position of {rotor.name}:gear:",
-        min_value=0,
-        max_value=25,
-        value=st.session_state.enigma_machine.config.rotors_init_position[i],
-        step=1,
+    st.sidebar.select_slider(
+        f"Init Position of {rotor.name} :gear:",
+        options=string.ascii_uppercase,
+        value=chr(
+            st.session_state.enigma_machine.config.rotors_init_position[i] + ord("A")
+        ),
         key=f"rotor{i}_position",
         # Updates the Enigma machine's rotor
         # position when the slider value changes.
-        on_change=lambda: update_rotor_position(i),
+        on_change=lambda: update_rotor_position(),
     )
 
 

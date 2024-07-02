@@ -14,11 +14,11 @@ def display_configuration__sidebar() -> None:
     and configure plugboard connections.
     """
     # Configuration
-    st.sidebar.header("Configuration:hammer_and_wrench:", divider="blue")
+    st.sidebar.header("Configuration :hammer_and_wrench:", divider="blue")
 
     # choose 3 working rotors out of 5 rotors
     st.sidebar.multiselect(
-        "Select Working Rotors:gear:",
+        "Select Working Rotors :gear:",
         options=["Rotor I", "Rotor II", "Rotor III", "Rotor IV", "Rotor V"],
         default=["Rotor I", "Rotor II", "Rotor III"],
         max_selections=3,
@@ -33,7 +33,7 @@ def display_configuration__sidebar() -> None:
 
     # set plugboard connections
     st.sidebar.text_area(
-        "Enter plugboard connections::electric_plug:",
+        "Enter plugboard connections :electric_plug:",
         value=st.session_state.enigma_machine.config.pulgboard_connections,
         help=(
             "Enter pairs of letters separated by spaces. "
