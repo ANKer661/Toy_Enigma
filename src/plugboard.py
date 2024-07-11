@@ -140,9 +140,10 @@ class Plugboard:
                  formatted as space-separated letter pairs.
         """
         connections = []
-        for i, c in enumerate(self.mapping):
+        temp = self.mapping.copy()
+        for i, c in enumerate(temp):
             if i != c:
                 connections.append(chr(ord("A") + i) + chr(ord("A") + c))
-                self.mapping[c] = c
+                temp[c] = c
 
         return " ".join(connections)
