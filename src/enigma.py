@@ -36,7 +36,7 @@ class EnigmaMachineConfig:
     working_rotor_indices: list[int] = field(default_factory=lambda: [0, 1, 2])
     rotors_init_position: list[int] = field(default_factory=lambda: [0, 0, 0])
     reflector_config_path: str = r"src/configs/default_reflector_config.json"
-    pulgboard_connections: str = "AJ KU DO WE FC NB QZ GM XV RT"
+    plugboard_connections: str = "AJ KU DO WE FC NB QZ GM XV RT"
 
 
 class EnigmaMachine:
@@ -78,8 +78,8 @@ class EnigmaMachine:
 
         self.reflector = Reflector.load_config(self.config.reflector_config_path)
         self.plugboard = Plugboard(
-            self.config.pulgboard_connections
-        )  # if None, use default Plugboard connections
+            self.config.plugboard_connections
+        )
         self.actuator_bar = ActuatorBar()
 
         self.update_circuit()
@@ -122,7 +122,7 @@ class EnigmaMachine:
         """
         Make Enigma Machine callable.
 
-        Simply calss the encrypt_decrypt method.
+        Simply call the encrypt_decrypt method.
         """
         return self.encrypt_decrypt(message)
 
@@ -163,7 +163,7 @@ class EnigmaMachine:
         """
         Sets the plugboard connections for the Enigma machine.
 
-        See details in src/plugboard Plugboard.set_plugboard()
+        See details in Plugboard.set_plugboard() of src/plugboard.py
 
         Args:
             connections (str, optional): A string representing plugboard
@@ -176,7 +176,7 @@ class EnigmaMachine:
         Retrieves current position of the current working rotors.
 
         Returns:
-            list[int]: A lsit each working rotor's current position.
+            list[int]: A list of each working rotor's current position.
         """
         return [rotor.get_current_position() for rotor in self.working_rotors]
 

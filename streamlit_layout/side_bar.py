@@ -34,7 +34,7 @@ def display_configuration__sidebar() -> None:
     # set plugboard connections
     st.sidebar.text_area(
         "Enter plugboard connections :electric_plug:",
-        value=st.session_state.enigma_machine.config.pulgboard_connections,
+        value=st.session_state.enigma_machine.config.plugboard_connections,
         help=(
             "Enter pairs of letters separated by spaces. "
             "Each letter can only be used once. "

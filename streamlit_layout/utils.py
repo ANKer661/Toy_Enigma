@@ -71,8 +71,7 @@ def update_plugboard_connections() -> None:
     try:
         st.session_state.enigma_machine.set_plugboard(st.session_state.plugboard_input)
         st.session_state.plugboard_invalid = False
-        for i in range(3):
-            update_rotor_position(i)
+        update_rotor_position()
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
         st.warning("Please check your plugboard connections and try again.")

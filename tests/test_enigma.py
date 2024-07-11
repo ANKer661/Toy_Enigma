@@ -75,7 +75,7 @@ class TestEnigmaMachine(unittest.TestCase):
         machine = EnigmaMachine(self.config)
         machine.set_plugboard("AB CD EF")
         self.assertEqual(
-            machine.get_plugboard_info(), "Plugboard Connections: AB CD EF"
+            machine.get_plugboard_info(), "Plugboard Connections:  \nAB CD EF"
         )
 
     def test_rotor_rotation(self):
